@@ -27,6 +27,7 @@ function App() {
       },
     },
   });
+  document.title = "Motion Prediction"
   //<Route path='/Docu' exact render={(props) => { window.location.href = "normal_redirect.html" }} />
   return (
     <>

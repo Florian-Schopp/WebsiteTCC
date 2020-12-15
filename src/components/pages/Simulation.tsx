@@ -52,7 +52,7 @@ interface IError {
 const Simulation = () => {
 
 
-    const apiUrl = 'http://0.0.0.0:9999/api/v1/';
+    const apiUrl = 'http://kappa.pcs.usp.br:9999/api/v1/';
     const [loading, setLoading] = useState(false);
     const [simulations, setSimulations] = useState<any[]>([]);
     const [simulationName, setSimulationName] = useState('');
