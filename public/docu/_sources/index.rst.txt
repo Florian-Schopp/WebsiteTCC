@@ -1,0 +1,54 @@
+.. Petrobras Mooring Line Failure Detection documentation master file, created by
+   sphinx-quickstart on Tue Jul 28 14:02:11 2020.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Petrobras Mooring Line Failure Detection
+====================================================================
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+Classifier
+==================
+.. automodule:: Classifier
+  :members:
+
+Errors
+==================
+.. automodule:: Errors
+  :members:
+
+Functions
+==================
+.. automodule:: Functions
+  :members:
+
+Objects
+==================
+.. automodule:: Objects
+  :members:
+
+Test Cases
+==================
+.. automodule:: test_All
+  :members:
+
+Training 
+==================
+.. automodule:: Training
+  :members:
+
+Testing 
+==================
+.. automodule:: Testing
+  :members:

@@ -1,0 +1,1000 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petrobras Mooring Line Failure Detection &#8212; Petrobras Mooring Line Failure Detection 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="petrobras-mooring-line-failure-detection">
+<h1>Petrobras Mooring Line Failure Detection<a class="headerlink" href="#petrobras-mooring-line-failure-detection" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="module-Classifier">
+<span id="classifier"></span><h1>Classifier<a class="headerlink" href="#module-Classifier" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="Classifier.Classifier">
+<em class="property">class </em><code class="sig-prename descclassname">Classifier.</code><code class="sig-name descname">Classifier</code><a class="headerlink" href="#Classifier.Classifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that is taking a trained Machine Learning algorithm
+to train different Classifier algorithms.
+The training is done in the train function while the validation is done in the function test</p>
+<dl class="py method">
+<dt id="Classifier.Classifier.test">
+<code class="sig-name descname">test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Classifier.Classifier.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to validate the trained classifier against the first 3000 cases
+of all five scenarios.
+Creates as output a error matrix that displays the files that were predicted wrongly.
+Gives also the possibility to test against individual files afterwards</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>folder (string): The directory of the trained ML Algorithm</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Classifier.Classifier.train">
+<code class="sig-name descname">train</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Classifier.Classifier.train" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function downloads the first 1000 files from the server for 5 different scenarios.
+The scenarios are Breakage in Line 1,9,12 and 19 and without any breakage.
+It then predicts the whole file and finde the error ratings for four different error scores.
+It stores the findings in a csv file</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>config (string): The directory of the trained ML Algorithm</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="Classifier.printHelp">
+<code class="sig-prename descclassname">Classifier.</code><code class="sig-name descname">printHelp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Classifier.printHelp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints a quick explanation of the modules call arguments</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-Errors">
+<span id="errors"></span><h1>Errors<a class="headerlink" href="#module-Errors" title="Permalink to this headline">¶</a></h1>
+<dl class="py exception">
+<dt id="Errors.ConfigError">
+<em class="property">exception </em><code class="sig-prename descclassname">Errors.</code><code class="sig-name descname">ConfigError</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Errors.ConfigError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception raised for all errors that occur during dealing with a Configfile.
+Most common are errors in the json markup or a wrong file Location</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>Exception (Exception): Inherits from the python Exception class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="Errors.HistoryError">
+<em class="property">exception </em><code class="sig-prename descclassname">Errors.</code><code class="sig-name descname">HistoryError</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Errors.HistoryError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception raised for all errors that occur during dealing with the Learning History.
+Most common are errors in the cvs that holds the Scaler information</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>Exception (Exception): Inherits from the python Exception class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="Errors.IndexError">
+<em class="property">exception </em><code class="sig-prename descclassname">Errors.</code><code class="sig-name descname">IndexError</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Errors.IndexError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception raised for errors in the input.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>expression – input expression in which the error occurred
+message – explanation of the error</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="Errors.InvalidFileName">
+<em class="property">exception </em><code class="sig-prename descclassname">Errors.</code><code class="sig-name descname">InvalidFileName</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Errors.InvalidFileName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception raised for all errors that occur during dealing with the Scaler.
+Most common are errors in the cvs that holds the Scaler information</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>Exception (Exception): Inherits from the python Exception class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="Errors.InvalidPathFile">
+<em class="property">exception </em><code class="sig-prename descclassname">Errors.</code><code class="sig-name descname">InvalidPathFile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Errors.InvalidPathFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception raised for all errors that occur during dealing with the Scaler.
+Most common are errors in the cvs that holds the Scaler information</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>Exception (Exception): Inherits from the python Exception class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="Errors.ModelError">
+<em class="property">exception </em><code class="sig-prename descclassname">Errors.</code><code class="sig-name descname">ModelError</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Errors.ModelError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception raised for all errors that occur during dealing with the keras Sequential model.
+Most common are errors in the model structure or invalid Layers</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>Exception (Exception): Inherits from the python Exception class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="Errors.ScalerError">
+<em class="property">exception </em><code class="sig-prename descclassname">Errors.</code><code class="sig-name descname">ScalerError</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Errors.ScalerError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception raised for all errors that occur during dealing with the Scaler.
+Most common are errors in the cvs that holds the Scaler information</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>Exception (Exception): Inherits from the python Exception class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="Errors.SimulationFileError">
+<em class="property">exception </em><code class="sig-prename descclassname">Errors.</code><code class="sig-name descname">SimulationFileError</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Errors.SimulationFileError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception raised for all errors that occur during dealing with the Simulation Files.
+Most common are errors invalid filepath or invalid file locations</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>Exception (Exception): Inherits from the python Exception class</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-Functions">
+<span id="functions"></span><h1>Functions<a class="headerlink" href="#module-Functions" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="Functions.getRunConfig">
+<code class="sig-prename descclassname">Functions.</code><code class="sig-name descname">getRunConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">local</span></em>, <em class="sig-param"><span class="n">abreviatedPath</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Functions.getRunConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to get the real file folder based on the local and the abreviated path</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>local (string): local of the file e.g. “kappa”
+abreviatedPath (str): abreviated path + index of the file e.g. b01/13</p>
+</dd>
+<dt>Raises:</dt><dd><p>InvalidPathFile: Is raised if the abreviated path or local is not valid</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: real file path on the locality of the file
+int: step_time: time of each step in the simulation file
+bool: from_tpn: True if the file needs to be downloaded from the tpn cluster</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="Functions.inputInteger">
+<code class="sig-prename descclassname">Functions.</code><code class="sig-name descname">inputInteger</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Functions.inputInteger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function that will print the message and will expect a Integer user input</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>message (string): Question to ask the user</p>
+</dd>
+<dt>Returns:</dt><dd><p>int: User response</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="Functions.inputYesNo">
+<code class="sig-prename descclassname">Functions.</code><code class="sig-name descname">inputYesNo</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Functions.inputYesNo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function that will print the message and will expect a Yes/No user input</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>message (string): Question to ask the user</p>
+</dd>
+<dt>Returns:</dt><dd><p>bool: User response (True=Yes/False=No)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="Functions.levessel">
+<code class="sig-prename descclassname">Functions.</code><code class="sig-name descname">levessel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Functions.levessel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to read a binary file and create a numpy array from it.
+Function was imported from the project:
+<a class="reference external" href="https://git.tpn.usp.br/grupo-ai-simulador/readbinaryfiles">https://git.tpn.usp.br/grupo-ai-simulador/readbinaryfiles</a></p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>filepath (string): path of the binary file</p>
+</dd>
+<dt>Returns:</dt><dd><p>numpy Array: 2D numpy array (timestep * Feature)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="Functions.loadAlgorithm">
+<code class="sig-prename descclassname">Functions.</code><code class="sig-name descname">loadAlgorithm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">folder</span></em>, <em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Functions.loadAlgorithm" title="Permalink to this definition">¶</a></dt>
+<dd><p>loads a algorithm suited to the configuration based on the
+Configurationfield configuration.Algorithm</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>folder (str): storepath of the algorithm
+config (Configuration): Configurationobject that will be used for training/testing</p>
+</dd>
+<dt>Raises:</dt><dd><p>ModelError: Error that is raised when the string Configuration.Algorithm is not recognized</p>
+</dd>
+<dt>Returns:</dt><dd><p>Algorithm: Algorithm object that will be used for the training</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="Functions.loadMetadata">
+<code class="sig-prename descclassname">Functions.</code><code class="sig-name descname">loadMetadata</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dir</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Functions.loadMetadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a trained Machinelearning Algorithm from the Metadata folder</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>dir (string): path to the metadata</p>
+</dd>
+<dt>Returns:</dt><dd><p>Configuration: Configuration Object
+Scaler: Fitted scaler used for training the model
+Algorithm: loaded algorithm with the model and preloaded weights of each node</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="Functions.parseArguments">
+<code class="sig-prename descclassname">Functions.</code><code class="sig-name descname">parseArguments</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">printHelp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Functions.parseArguments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function used for parsing the input arguments
+right now only three supported
+-c: Configurationfile
+-h: Help description how to call the function
+-Y: answer all Questions with Yes</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>printHelp (function): Help function that should be called if the flag -h is set</p>
+</dd>
+<dt>Returns:</dt><dd><p>string: configfile: filepath of the Configuration file object
+bool: allyes: true if all user input should be responded with yes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="Functions.parseFileName">
+<code class="sig-prename descclassname">Functions.</code><code class="sig-name descname">parseFileName</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Functions.parseFileName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to separate a file string to abreviation + index</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>file (string): filestring that should be separated e.g. “new/100”</p>
+</dd>
+<dt>Raises:</dt><dd><p>InvalidFileName: Exception that is raised if the argument is invalid</p>
+</dd>
+<dt>Returns:</dt><dd><p>string: abreviated folder of the file
+string: index of the file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="Functions.saveMetadata">
+<code class="sig-prename descclassname">Functions.</code><code class="sig-name descname">saveMetadata</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em>, <em class="sig-param"><span class="n">scale</span></em>, <em class="sig-param"><span class="n">algo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Functions.saveMetadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save a trained Machinelearning Algorithm from the Metadata folder</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>config (Configuration): Configuration Object
+scale (Scaler): Fitted scaler used for training the model
+algo (Algorithm): Algorithm with the model and preloaded weights of each node</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="Functions.setupResultfolder">
+<code class="sig-prename descclassname">Functions.</code><code class="sig-name descname">setupResultfolder</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Functions.setupResultfolder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets up the Result folder cleaning the directory for any files and
+creating necessary subfolders</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>config (Configuration): Configurationobject indicating the filename
+of the metafolder</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-Objects">
+<span id="objects"></span><h1>Objects<a class="headerlink" href="#module-Objects" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="Objects.Configuration">
+<em class="property">class </em><code class="sig-prename descclassname">Objects.</code><code class="sig-name descname">Configuration</code><a class="headerlink" href="#Objects.Configuration" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Program can be started with a configfile. Configuration files are
+stored in the folder Configs.
+If no Configfile is given as a parameter or the file can not be found in
+the Configs directory
+the program will generate a new Configfile and asking all the values
+needed for the execution.</p>
+<dl class="py method">
+<dt id="Objects.Configuration.extractName">
+<code class="sig-name descname">extractName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Objects.Configuration.extractName" title="Permalink to this definition">¶</a></dt>
+<dd><p>extracts the filename from the path
+:return: filename</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.Configuration.fromConfig">
+<code class="sig-name descname">fromConfig</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Objects.Configuration.fromConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>loads a configurationfile with the defined filename. If no file is
+found with the specified name
+the file is created with default parameters and the user is created
+:return: the config object with all the fields</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.Configuration.load">
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Objects.Configuration.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to create a Config object from the Metadata folder</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>configfile</strong> – Name of the configuration that should be loaded</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Configobject with the parameters of the Config.json file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.Configuration.loadDefault">
+<code class="sig-name descname">loadDefault</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Objects.Configuration.loadDefault" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains the default file attributes that are preloaded at file
+generation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.Configuration.save">
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dir</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.Configuration.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the file in the Configurationdir</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.Configuration.saveConfig">
+<code class="sig-name descname">saveConfig</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Objects.Configuration.saveConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the file in the Configurationdir</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.Configuration.saveMetaData">
+<code class="sig-name descname">saveMetaData</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Objects.Configuration.saveMetaData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the file in the Metadata directory of the run</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="Objects.Credentials">
+<em class="property">class </em><code class="sig-prename descclassname">Objects.</code><code class="sig-name descname">Credentials</code><a class="headerlink" href="#Objects.Credentials" title="Permalink to this definition">¶</a></dt>
+<dd><p>The user credentials for accessing the TPN Server can be stored in a
+Credentials.json file. The file is located in the Configs directory.
+Keep in mind that the password is plain text in the Credentials file.
+If you don’t want them to be stored in the file just respond with no when
+asked if the credentials should be stored.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="Objects.History">
+<em class="property">class </em><code class="sig-prename descclassname">Objects.</code><code class="sig-name descname">History</code><a class="headerlink" href="#Objects.History" title="Permalink to this definition">¶</a></dt>
+<dd><p>class to store and display the learning curve of the Training of a algorithm</p>
+<dl class="py method">
+<dt id="Objects.History.safe">
+<code class="sig-name descname">safe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">h</span></em>, <em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.History.safe" title="Permalink to this definition">¶</a></dt>
+<dd><p>safes the history as a csv([training score, validation score] * Epochs)</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>h (History):Keras History object that should be saved
+config (Configuration): Configuration object used to determine Metafolder</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.History.showHistory">
+<code class="sig-name descname">showHistory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Objects.History.showHistory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the training history in a graph(x=Epochs,y1= Score Train, y2= Score Validation)</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>path (str): Path to the history object that should be displayed</p>
+</dd>
+<dt>Raises:</dt><dd><p>err.HistoryError: Raised if the history.csv file is not found</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="Objects.InputParser_Environment">
+<em class="property">class </em><code class="sig-prename descclassname">Objects.</code><code class="sig-name descname">InputParser_Environment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.InputParser_Environment" title="Permalink to this definition">¶</a></dt>
+<dd><p>The inputparser Environment object is used to analyze the ambient
+conditions of the platform and to pick indexes
+well fitted for training and validation</p>
+<dl class="py method">
+<dt id="Objects.InputParser_Environment.createIndiceTable">
+<code class="sig-name descname">createIndiceTable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Objects.InputParser_Environment.createIndiceTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to display the ambient conditions of the given indices</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>indices (List&lt;str&gt;): List containing the indices</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.InputParser_Environment.getClosestValue">
+<code class="sig-name descname">getClosestValue</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">array</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.InputParser_Environment.getClosestValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the closest Condition to the hypothetical condition defined in
+array
+:param array: Hypothetical environment condition
+:return: Index of real Condition that comes closest to hypothetical
+condition</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.InputParser_Environment.getRawData">
+<code class="sig-name descname">getRawData</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Objects.InputParser_Environment.getRawData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to get the internally stored DataFrame</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>pandas DataFrame: Returns the data frame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.InputParser_Environment.printHistogram">
+<code class="sig-name descname">printHistogram</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">add</span><span class="o">=</span><span class="default_value">[]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.InputParser_Environment.printHistogram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays the Histogram graphically for better understanding of the
+normal distribution of the data</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.InputParser_Environment.printyTime">
+<code class="sig-name descname">printyTime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Objects.InputParser_Environment.printyTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>shows a graphical visualization of all the conditions over the time
+feature separated</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.InputParser_Environment.selectingIndices">
+<code class="sig-name descname">selectingIndices</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">number</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.InputParser_Environment.selectingIndices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects n indices that follow the normal distribution of all the
+environmental conditions. See documentation for further details
+:param number: Number of indexes that should be selected
+:return: Array of indexes selected</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="Objects.LatexParser">
+<em class="property">class </em><code class="sig-prename descclassname">Objects.</code><code class="sig-name descname">LatexParser</code><a class="headerlink" href="#Objects.LatexParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>class used to created Latex Tables from dataframes</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="Objects.LogLevel">
+<em class="property">class </em><code class="sig-prename descclassname">Objects.</code><code class="sig-name descname">LogLevel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.LogLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="Objects.Logger">
+<em class="property">class </em><code class="sig-prename descclassname">Objects.</code><code class="sig-name descname">Logger</code><a class="headerlink" href="#Objects.Logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Logger is Logging all the output of the Program to the console and in
+a logfile called Log.txt located in Results/.
+The depth of the Logger is defined by the environment variable ‘PETROBRAS_LOG_LEVEL’</p>
+<dl class="py method">
+<dt id="Objects.Logger.logDebug">
+<code class="sig-name descname">logDebug</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Objects.Logger.logDebug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function used to Log a Debug Message</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>message (str): message to be logged</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.Logger.logError">
+<code class="sig-name descname">logError</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Objects.Logger.logError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs the message in the file and prints it to the console. If the
+loggerlevel matches</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>message (str): message to be logged</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="Objects.ResultFile">
+<em class="property">class </em><code class="sig-prename descclassname">Objects.</code><code class="sig-name descname">ResultFile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">config</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.ResultFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Object used to calculate Error scores and display graphically the prevision and simulation.</p>
+<dl class="py method">
+<dt id="Objects.ResultFile.calculateResults">
+<code class="sig-name descname">calculateResults</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Objects.ResultFile.calculateResults" title="Permalink to this definition">¶</a></dt>
+<dd><p>The file is comparing the simulated ship movement against the predicted ship movement.
+It seperates the Timeline in error windows that have the size of two previsions.
+For each window different Error scores are calculated. The Error scores are RMSE, Absolute Error
+Deviation and Mean Error. Afterwards the errorwindows are compared to each other and the highest
+error is selected as beeing representative for the file.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>numy Array (Error type, features): returns the maximum error ratings selected for this file as an Array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.ResultFile.displayArrays">
+<code class="sig-name descname">displayArrays</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arrays</span></em>, <em class="sig-param"><span class="n">labels</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.ResultFile.displayArrays" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>function to display the given arrays</p>
+</div></blockquote>
+<dl class="simple">
+<dt>Args:</dt><dd><p>arrays (numpy Array [idx Array, timesteps]): List of one dimensional Arrays containing 1 Timeline
+labels (List&lt;str&gt;): name of each array to show in the legend</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.ResultFile.displayDynasm">
+<code class="sig-name descname">displayDynasm</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Objects.ResultFile.displayDynasm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function that displays comparision between an array of files</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>output (List&lt;str&gt;):  List that contains all the files that should
+be compared</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.ResultFile.displayResult">
+<code class="sig-name descname">displayResult</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">showVerticalLines</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.ResultFile.displayResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays graphically the prevision against the simulated ship movement</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>showVerticalLines (bool, optional): Shows vertical lines for better seperation of the individual predictions.
+Defaults to False.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.ResultFile.printErrors">
+<code class="sig-name descname">printErrors</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mean_error</span></em>, <em class="sig-param"><span class="n">rmse</span></em>, <em class="sig-param"><span class="n">deviation</span></em>, <em class="sig-param"><span class="n">max_error</span></em>, <em class="sig-param"><span class="n">real</span></em>, <em class="sig-param"><span class="n">predicted</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.ResultFile.printErrors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function displaying the calculated Error indexes for each window</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>mean_error (numpy Array(Mean Error rating)): 1D Array containing all Mean Error ratings for every window
+rmse (numpy Array(RMSE Error rating)): 1D Array containing all RMS Error ratings for every window
+deviation (numpy Array(deviation rating)): 1D Array containing all Deviation Error ratings for every window
+max_error (numpy Array(Max Error rating)): 1D Array containing all Max Error ratings for every window
+real (numpy Array(Simulated Feature)): 1D Array containing the simulated Ship Movement
+predicted (numpy Array(Predicted Feature)): 1D Array containing the predicted Ship Movement</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.ResultFile.printWindows">
+<code class="sig-name descname">printWindows</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">real</span></em>, <em class="sig-param"><span class="n">predicted</span></em>, <em class="sig-param"><span class="n">window_difference</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.ResultFile.printWindows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to visualizing the creation of the error windows</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>real (np array (timesteps)): array containing the simulated ship movement for one Feature
+predicted (np array (timesteps)): array containing the predicted ship movement for the same Feature
+window_difference (np array (timesteps)): array containing the difference between the 2</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.ResultFile.show">
+<code class="sig-name descname">show</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Objects.ResultFile.show" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows the array in a graphical way separated by the features</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>array (numy Array (file index, timesteps, features)): numpy array containing all files that should be compared</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.ResultFile.window_stack">
+<code class="sig-name descname">window_stack</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">windowwidth</span><span class="o">=</span><span class="default_value">3</span></em>, <em class="sig-param"><span class="n">skip</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.ResultFile.window_stack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a sliding window of the prevision data with the fixed window
+width</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>a (numpy Array): Array containing the ship movement (Timesteps * Features)
+windowwidth (int, optional): Width of the error window. Defaults to 3.
+skip (int, optional): Defines how many Timesteps to skip before creating the next window.
+Defaults to 1.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Numpy Array( window idx, timesteps, features): An 3 dimensional error with the first dimension containing
+the windowIdx, timesteps(windowsize), features)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="Objects.Scaler">
+<em class="property">class </em><code class="sig-prename descclassname">Objects.</code><code class="sig-name descname">Scaler</code><a class="headerlink" href="#Objects.Scaler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scaler that Scales every column individually to an area between 0 and 1</p>
+<dl class="py method">
+<dt id="Objects.Scaler.fit">
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dat</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.Scaler.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is used to fit the scaler to the data and must be
+called before scaling the data. It should only be called once
+to garanty data consistency and scaling with the same values.
+This Scaler scales each column individually to a value range
+between zero and one to have higher acuracy
+:param data: contains the data set that is used to scale the
+algorithm</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.Scaler.invScale">
+<code class="sig-name descname">invScale</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dat</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.Scaler.invScale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to generate the original data from scaled data in the area
+between zero and one
+:param data: scaled dataset
+:return: Dataset in the original value range</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.Scaler.load">
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.Scaler.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads the scaler data of a already fitted scaler to use the Scaler for
+scaling testdata. Avoid fitting the Scaler again!
+For consistency the same scaler metadata should be used for testing
+and training
+:return: the scaler with the preloaded Metadata. This scaler does not
+need to be fitted!</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.Scaler.save">
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dir</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.Scaler.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the Scaler data ( Peak to peak and offset values for each
+feature) In a csv file to the Metadata
+:param config: The configuration to determine the Metadata folder for
+the data</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.Scaler.scale">
+<code class="sig-name descname">scale</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dat</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.Scaler.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to scale any input data. It flattens the data and scales
+the data to a value range between zero and one
+:param data: Data that should be scaled
+:return: returns scaled dataArray</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.Scaler.testScaler">
+<code class="sig-name descname">testScaler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.Scaler.testScaler" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function tests the scaler acuracy. It does this by scaling a
+testdata and inverse scaling the data again.
+It calculates the loss for each feature that can happen because of
+float inacuracies
+:param data: Data that should be used for testing the scaler accuracy</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="Objects.SimulationFile">
+<em class="property">class </em><code class="sig-prename descclassname">Objects.</code><code class="sig-name descname">SimulationFile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">local</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.SimulationFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>File Object that represents a Simulationfile</p>
+<dl class="py method">
+<dt id="Objects.SimulationFile.Binary_To_Array">
+<code class="sig-name descname">Binary_To_Array</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.SimulationFile.Binary_To_Array" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function gets the binary data from a indicated filename.
+It deletes all the additional columns not needed
+Cuts the first 100 steps because during that time the platform didnt
+find an equilibrium
+Normalizes the stepsize to one secound by cutting the timesteps not needed</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>filename (str): name of the file to extract the data</p>
+</dd>
+<dt>Returns:</dt><dd><p>DataFrame: dataframe of the prepared data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.SimulationFile.Binary_to_CSV">
+<code class="sig-name descname">Binary_to_CSV</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Objects.SimulationFile.Binary_to_CSV" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a csv file from a binary file array</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.SimulationFile.retrieve_Array">
+<code class="sig-name descname">retrieve_Array</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">download</span></em>, <em class="sig-param"><span class="n">conn</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.SimulationFile.retrieve_Array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetches data from the Server. Depending on the file location
+the fetching is handled differently. If the download flag is set
+a local copy is generated on the executing computer in the folder
+code/Data/local</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>download (bool): flag if a local copy should be created
+conn (SMBConnection, optional): Needed for Downloading files from the TPN Server.
+Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>numpy array: (Timestep, Feature)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.SimulationFile.showData">
+<code class="sig-name descname">showData</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.SimulationFile.showData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays the array in a graphical way separated by the features</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>array (Numpy Array): Array(file index,timestep,feature)
+config (Configuration): Configurationfile used to display the file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.SimulationFile.showSets">
+<code class="sig-name descname">showSets</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Y</span></em>, <em class="sig-param"><span class="n">Total</span></em>, <em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.SimulationFile.showSets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays the array in a graphical way separated by the features</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>X (Numpy Array): Input Array(timestep,feature)
+Y (Numpy Array): Output Array(timestep,feature)
+Total (Numpy Array): Array(timestep,feature) containing in and output
+config (Configuration): Configurationfile used to display the file</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="Objects.SimulationFileLoader">
+<em class="property">class </em><code class="sig-prename descclassname">Objects.</code><code class="sig-name descname">SimulationFileLoader</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.SimulationFileLoader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that is responsible for loading Simulationfiles and maintaining the data connection</p>
+<dl class="py method">
+<dt id="Objects.SimulationFileLoader.connectServer">
+<code class="sig-name descname">connectServer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Objects.SimulationFileLoader.connectServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Depending on the Local Field in the configuration file this function opens a SMB connection
+(local: “tpn”) or sshfs connection to the kappa computer (local:”kappa”). In any other case
+no connection is opened. The field connected is then set to true</p>
+<dl class="simple">
+<dt>Raises:</dt><dd><p>err.SimulationFileError: This error is raised if the SMB connection or the sshfs connection
+are not possible</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.SimulationFileLoader.disconnectServer">
+<code class="sig-name descname">disconnectServer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Objects.SimulationFileLoader.disconnectServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>The function will close the opened Connection.
+The field connected is then set to false</p>
+<dl class="simple">
+<dt>Raises:</dt><dd><p>err.SimulationFileError: This error is raised if the SMB connection or the sshfs connection
+are not existent</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.SimulationFileLoader.getDataArray">
+<code class="sig-name descname">getDataArray</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">files</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.SimulationFileLoader.getDataArray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to create a numpy array of the specified files.
+The array will be 3D where the first Dimension is the file index
+(eg. files[3] -&gt; arr[3][:,:])</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>files (List&lt;str&gt;): List of all the files to be parsed into the array</p>
+</dd>
+<dt>Raises:</dt><dd><p>Exception: raised if the SimulationfileLoader is not connected yet</p>
+</dd>
+<dt>Returns:</dt><dd><p>numpy Array: (file Index, timesteps, feature)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.SimulationFileLoader.loadCondiditions">
+<code class="sig-name descname">loadCondiditions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">files</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Objects.SimulationFileLoader.loadCondiditions" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function generates a numpy array of all the scenarios that
+are correlated to the file list. It checks the abbreviated path
+and calculates date and time based on the Startdate.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>files (List&lt;str&gt;): List of all abbreviated files that theEnvironment
+Condition should be detected</p>
+</dd>
+<dt>Raises:</dt><dd><p>err.SimulationFileError: Is raised in case of an invalid file path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="Objects.SimulationFileLoader.printHelp">
+<code class="sig-name descname">printHelp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Objects.SimulationFileLoader.printHelp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function that prints all availible path with additional information about them</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-test_All">
+<span id="test-cases"></span><h1>Test Cases<a class="headerlink" href="#module-test_All" title="Permalink to this headline">¶</a></h1>
+<p>Unit tests for the Functions classes</p>
+</div>
+<div class="section" id="module-Training">
+<span id="training"></span><h1>Training<a class="headerlink" href="#module-Training" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="Training.loadFiles">
+<code class="sig-prename descclassname">Training.</code><code class="sig-name descname">loadFiles</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em>, <em class="sig-param"><span class="n">fileType</span></em>, <em class="sig-param"><span class="n">acceptAll</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Training.loadFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is creating an array of indexes of files that should be
+loaded from the server. Can be used for creating
+the Validation file array and Training file array</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>config (Configuration): Used to load the predifined files from the Configuration.
+fileType (fileType): Can be Training or Validation
+acceptAll (bool): True if all User input should be responded with Yes</p>
+</dd>
+<dt>Returns:</dt><dd><p>list&lt;str&gt;: List of the file indexes that should be used for training or validation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="Training.printHelp">
+<code class="sig-prename descclassname">Training.</code><code class="sig-name descname">printHelp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Training.printHelp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints a quick explanation of the modules call arguments</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="Training.training">
+<code class="sig-prename descclassname">Training.</code><code class="sig-name descname">training</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">configfile</span></em>, <em class="sig-param"><span class="n">acceptAll</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Training.training" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is loading the algorithm and the selected training and
+validationfiles. It then will prepare the data by scaling it and will
+train the algorithm afterwards with trainingssets based on the training
+and validation files. The Trained algorithm with all important Data
+is stored to the Metadatafolder
+It checks if there is already metadata availible</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>configfile (str): Name of the Configuration to be loaded or created.
+acceptAll (bool): Variable that defines if all user input should be responded with Yes</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-Testing">
+<span id="testing"></span><h1>Testing<a class="headerlink" href="#module-Testing" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="Testing.Testing">
+<code class="sig-prename descclassname">Testing.</code><code class="sig-name descname">Testing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">metapath</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Testing.Testing" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is loading trained metadata and is doing a prevision for a
+selected Fileindex. The prevision is done every n Timesteps so that each Timestep
+is only prevised once. The errors are then calculated based on the difference
+between prevision and simulation. The difference between these two is also shown
+graphically.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>metapath (str): path to the metadata that should be tested</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="Testing.computeResult">
+<code class="sig-prename descclassname">Testing.</code><code class="sig-name descname">computeResult</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file</span></em>, <em class="sig-param"><span class="n">loader</span></em>, <em class="sig-param"><span class="n">algo</span></em>, <em class="sig-param"><span class="n">scaler</span></em>, <em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Testing.computeResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to calculate the Error values for a given file and model.
+The data is first scaled and then split into Testing sets.
+These Testing sets are then predicted by the algorithm and the previsions
+are grouped into error windows of two previsions. For each error window an
+Error Score is calculated and the window that has the highest error score
+is selelted to represent the error score of the whole file.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>file (str): abbreviated filepath
+loader (SimulationFileLoader): Loader object that is used to load the file
+algo (Algorithm): The algorithm to be used to predict the File
+scaler (Scaler): The Scaler to be used to scale the File
+config (Configuration): Configurationobject containing the Configuration of the Algorithm</p>
+</dd>
+<dt>Returns:</dt><dd><p>numpy Array: Array containing the Error Score of the file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="Testing.printHelp">
+<code class="sig-prename descclassname">Testing.</code><code class="sig-name descname">printHelp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Testing.printHelp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints a quick explanation of the modules call arguments</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">Petrobras Mooring Line Failure Detection</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Florian Schopp, Amir Saad.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
